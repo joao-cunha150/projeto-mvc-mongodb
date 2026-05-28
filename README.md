@@ -1,283 +1,147 @@
-# Projeto MVC com MongoDB
+# DevSystem - Sistema MVC com Autenticação
 
 ## Sobre o Projeto
 
-Este projeto foi desenvolvido utilizando arquitetura MVC (Model-View-Controller) com integração ao MongoDB utilizando Mongoose.
+O DevSystem é uma aplicação web desenvolvida utilizando arquitetura MVC (Model-View-Controller) com foco em organização, segurança e persistência de dados utilizando MongoDB.
 
-O objetivo do sistema é demonstrar a separação correta das responsabilidades da aplicação, utilizando persistência real de dados, middlewares, rotas organizadas e operações CRUD completas.
+O projeto foi criado como atividade prática para implementação de:
+
+* Sistema de autenticação
+* Controle de acesso
+* Gerenciamento de sessões
+* Middleware de proteção
+* Logout seguro
 
 ---
 
 # Tecnologias Utilizadas
 
-- Node.js
-- Express.js
-- MongoDB Atlas
-- MongoDB Compass
-- Mongoose
-- HTML5
-- CSS3
-- JavaScript
-
----
-
-# Arquitetura MVC
-
-O projeto segue o padrão MVC:
-
-Cliente → Routes → Middleware → Controller → Model → MongoDB
-
-## Models
-
-Responsáveis pela estrutura e manipulação dos dados no banco.
-
-## Controllers
-
-Responsáveis pelas regras de negócio e lógica da aplicação.
-
-## Routes
-
-Responsáveis pelas rotas da API.
-
-## Middlewares
-
-Executam funções intermediárias antes das requisições chegarem aos controllers.
-
-## Views
-
-Responsáveis pela interface visual da aplicação.
-
----
-
-# Funcionalidades
-
-- Cadastro de usuários
-- Listagem de usuários
-- Atualização de usuários
-- Remoção de usuários
-- Integração com MongoDB
-- Tratamento de erros
-- Middleware de log
-- API REST
-- Interface responsiva
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* HTML5
+* CSS3
+* JavaScript
+* Express-Session
 
 ---
 
 # Estrutura do Projeto
 
-projeto-mvc-mongodb/
-
-├── node_modules
-
-├── src
-
-│ ├── config
-
-│ │ └── db.js
-
-│ ├── controllers
-
-│ │ └── userController.js
-
-│ ├── middlewares
-
-│ │ └── logger.js
-
-│ ├── models
-
-│ │ └── User.js
-
-│ ├── public
-
-│ │ └── css
-
-│ │ └── style.css
-
-│ ├── routes
-
-│ │ └── userRoutes.js
-
-│ ├── views
-
-│ │ └── index.html
-
-│ └── app.js
-
-├── .env
-
-├── .env.example
-
-├── .gitattributes
-
-├── .gitignore
-
-├── package-lock.json
-
+```bash
+├── config/
+│   └── database.js
+├── src/
+│   ├── controllers/
+│   │   └── authController.js
+│   ├── middlewares/
+│   │   └── auth.js
+│   ├── routes/
+│   │   └── authRoutes.js
+│   ├── views/
+│   │   ├── login.html
+│   │   ├── index.html
+│   │   ├── eventos.html
+│   │   ├── contato.html
+│   │   └── participantes.html
+│   └── public/
+│       └── css/
+│           └── style.css
+├── server.js
 ├── package.json
-
-├── README.md
-
-└── server.js
+└── README.md
+```
 
 ---
 
-# Instalação do Projeto
+# Funcionalidades Implementadas
 
-## 1. Clonar repositório
+## Sistema de Login
 
-git clone URL_DO_REPOSITORIO
-
----
-
-## 2. Entrar na pasta
-
-cd projeto-mvc-mongodb
+O usuário pode realizar login utilizando e-mail e senha cadastrados no banco de dados.
 
 ---
 
-## 3. Instalar dependências
+## Sessão de Usuário
 
-npm install
+Foi utilizado o pacote:
 
----
+```bash
+express-session
+```
 
-# Configuração do MongoDB
-
-## Criar arquivo .env
-
-PORT=3000
-
-MONGO_URI=SUA_URL_DO_MONGODB
+para gerenciamento de sessões autenticadas.
 
 ---
 
-# Executar o Projeto
+## Middleware de Proteção
 
-## Modo desenvolvimento
+As páginas internas do sistema são protegidas através de middleware.
 
-npm run dev
-
----
-
-## Modo produção
-
-npm start
+Usuários não autenticados são automaticamente redirecionados para a tela de login.
 
 ---
 
-# Rotas da API
+## Logout Seguro
 
-## Criar usuário
+O sistema possui logout seguro utilizando:
 
-POST /api/users
+```js
+req.session.destroy()
+```
 
-Body:
-
-{
-"nome":"João",
-"email":"joao@gmail.com",
-"senha":"123456"
-}
-
----
-
-## Listar usuários
-
-GET /api/users
-
----
-
-## Atualizar usuário
-
-PUT /api/users/:id
-
----
-
-## Deletar usuário
-
-DELETE /api/users/:id
-
----
-
-# Status HTTP Utilizados
-
-- 200 → Sucesso
-- 201 → Criado com sucesso
-- 400 → Erro de validação
-- 404 → Não encontrado
-- 500 → Erro interno do servidor
+Além disso, o cookie da sessão é removido para impedir acesso após sair do sistema.
 
 ---
 
 # Segurança
 
-O projeto utiliza:
-
-- Variáveis de ambiente com dotenv
-- .gitignore para proteger credenciais
-- Tratamento de erros utilizando try/catch
-
----
-
-# Middleware
-
-O middleware logger registra todas as requisições realizadas no servidor.
-
-Exemplo:
-
-GET - /api/users
-
-POST - /api/users
+* Controle de sessão
+* Bloqueio de rotas privadas
+* Redirecionamento automático
+* Proteção contra acesso sem login
 
 ---
 
-# Persistência de Dados
+# Como Executar o Projeto
 
-Todos os dados são armazenados diretamente no MongoDB Atlas utilizando Mongoose.
+## 1. Clonar o repositório
 
-As operações CRUD utilizam:
-
-- User.create()
-- User.find()
-- User.findByIdAndUpdate()
-- User.findByIdAndDelete()
+```bash
+git clone URL_DO_REPOSITORIO
+```
 
 ---
 
-# Front-End
+## 2. Instalar dependências
 
-O front-end foi desenvolvido utilizando HTML e CSS puro.
-
-O layout possui:
-
-- Design moderno
-- Responsividade
-- Gradientes
-- Glassmorphism
-- Interface centralizada
+```bash
+npm install
+```
 
 ---
 
-# Objetivo Acadêmico
+## 3. Executar o projeto
 
-Este projeto foi desenvolvido para demonstrar conhecimentos em:
+```bash
+npm start
+```
 
-- Arquitetura MVC
-- Banco de Dados NoSQL
-- Integração MongoDB
-- CRUD completo
-- API REST
-- Middlewares
-- Tratamento de erros
-- Organização profissional de projetos
+---
+
+# Requisitos da Atividade Atendidos
+
+* Bloqueio de páginas sem login
+* Login funcional
+* Persistência de sessão
+* Logout seguro
+* Middleware de autenticação
+* Estrutura MVC organizada
+* Integração com MongoDB
 
 ---
 
 # Autor
 
-João Victor da Cunha Rosa
-
----
-
-
-
+Projeto desenvolvido para atividade prática de autenticação utilizando Node.js, Express e MongoDB.
