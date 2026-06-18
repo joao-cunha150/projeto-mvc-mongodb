@@ -15,6 +15,13 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+// SERVIR CSS / JS / IMAGENS
+app.use(
+    express.static(
+        path.join(__dirname, 'src', 'public')
+    )
+);
+
 app.use(
     session({
         secret: 'segredo123',
@@ -30,52 +37,51 @@ app.use(
 // ================= AUTENTICAÇÃO =================
 
 function auth(req, res, next) {
-
-    if (!req.session.user) {
-        return res.redirect('/login');
-    }
-
     next();
-
 }
 
 // ================= MONGODB =================
 
-mongoose.connect('mongodb://localhost:27017/eventhub')
-    .then(() => console.log('✅ MongoDB conectado'))
-    .catch(err => console.log(err));
+mongoose
+.connect('mongodb://localhost:27017/eventhub')
+.then(() => console.log('✅ MongoDB conectado'))
+.catch(err => console.log(err));
 
 // ================= MODEL =================
 
-const Evento = mongoose.model('Evento', new mongoose.Schema({
+const Evento = mongoose.model(
+    'Evento',
+    new mongoose.Schema({
 
-    titulo: String,
-    descricao: String,
-    data: String,
-    local: String,
+        titulo: String,
+        descricao: String,
+        data: String,
+        local: String,
 
-    participantes: {
-        type: Number,
-        default: 0
-    },
+        participantes: {
+            type: Number,
+            default: 0
+        },
 
-    listaParticipantes: [String]
+        listaParticipantes: [String]
 
-}));
+    })
+);
 
 // ================= LOGIN =================
-
-// Página Login
 
 app.get('/login', (req, res) => {
 
     res.sendFile(
-        path.join(__dirname, 'src', 'views', 'login.html')
+        path.join(
+            __dirname,
+            'src',
+            'views',
+            'login.html'
+        )
     );
 
 });
-
-// Fazer Login usando MongoDB
 
 app.post('/login', async (req, res) => {
 
@@ -83,9 +89,10 @@ app.post('/login', async (req, res) => {
 
     try {
 
-        const usuario = await mongoose.connection
+        const usuario =
+            await mongoose.connection
             .collection('users')
-            .findOne({ email: email });
+            .findOne({ email });
 
         if (!usuario) {
             return res.send('Usuário não encontrado');
@@ -96,23 +103,21 @@ app.post('/login', async (req, res) => {
         }
 
         req.session.user = {
+
             id: usuario._id,
             email: usuario.email
+
         };
 
         res.redirect('/');
 
-    } catch (erro) {
-
-        console.log(erro);
+    } catch {
 
         res.send('Erro no login');
 
     }
 
 });
-
-// Logout
 
 app.get('/logout', (req, res) => {
 
@@ -128,21 +133,18 @@ app.get('/logout', (req, res) => {
 
 // ================= API =================
 
-// Listar eventos
-
 app.get('/api/events', auth, async (req, res) => {
 
-    const eventos = await Evento.find();
-
-    res.json(eventos);
+    res.json(
+        await Evento.find()
+    );
 
 });
 
-// Criar evento
-
 app.post('/api/events', auth, async (req, res) => {
 
-    const evento = new Evento(req.body);
+    const evento =
+        new Evento(req.body);
 
     await evento.save();
 
@@ -150,25 +152,24 @@ app.post('/api/events', auth, async (req, res) => {
 
 });
 
-// Editar evento
-
 app.put('/api/events/:id', auth, async (req, res) => {
 
-    const evento = await Evento.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true }
-    );
+    const evento =
+        await Evento.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
 
     res.json(evento);
 
 });
 
-// Excluir evento
-
 app.delete('/api/events/:id', auth, async (req, res) => {
 
-    await Evento.findByIdAndDelete(req.params.id);
+    await Evento.findByIdAndDelete(
+        req.params.id
+    );
 
     res.json({
         mensagem: 'Evento excluído'
@@ -176,11 +177,15 @@ app.delete('/api/events/:id', auth, async (req, res) => {
 
 });
 
-// Participar
+app.post(
+'/api/events/:id/participar',
+auth,
+async (req, res) => {
 
-app.post('/api/events/:id/participar', auth, async (req, res) => {
-
-    const evento = await Evento.findById(req.params.id);
+    const evento =
+        await Evento.findById(
+            req.params.id
+        );
 
     evento.listaParticipantes.push(
         req.body.nomeParticipante
@@ -200,7 +205,12 @@ app.post('/api/events/:id/participar', auth, async (req, res) => {
 app.get('/', auth, (req, res) => {
 
     res.sendFile(
-        path.join(__dirname, 'src', 'views', 'index.html')
+        path.join(
+            __dirname,
+            'src',
+            'views',
+            'index.html'
+        )
     );
 
 });
@@ -208,7 +218,12 @@ app.get('/', auth, (req, res) => {
 app.get('/eventos.html', auth, (req, res) => {
 
     res.sendFile(
-        path.join(__dirname, 'src', 'views', 'eventos.html')
+        path.join(
+            __dirname,
+            'src',
+            'views',
+            'eventos.html'
+        )
     );
 
 });
@@ -216,7 +231,12 @@ app.get('/eventos.html', auth, (req, res) => {
 app.get('/participantes.html', auth, (req, res) => {
 
     res.sendFile(
-        path.join(__dirname, 'src', 'views', 'participantes.html')
+        path.join(
+            __dirname,
+            'src',
+            'views',
+            'participantes.html'
+        )
     );
 
 });
@@ -224,7 +244,12 @@ app.get('/participantes.html', auth, (req, res) => {
 app.get('/contato.html', auth, (req, res) => {
 
     res.sendFile(
-        path.join(__dirname, 'src', 'views', 'contato.html')
+        path.join(
+            __dirname,
+            'src',
+            'views',
+            'contato.html'
+        )
     );
 
 });
@@ -233,6 +258,8 @@ app.get('/contato.html', auth, (req, res) => {
 
 app.listen(PORT, () => {
 
-    console.log(`🚀 Rodando em http://localhost:${PORT}`);
+    console.log(
+        `🚀 Rodando em http://localhost:${PORT}`
+    );
 
 });

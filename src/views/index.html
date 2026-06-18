@@ -1,170 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EventHub</title>
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Implementação de Autenticação e Controle de Acesso - MVC MongoDB</title>
-
-    <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/style.css">
 
 </head>
 
 <body>
-<body>
 
-    <div class="logout-container">
-        <a href="/logout" class="btn-sair">
-            🚪 Sair
-        </a>
-    </div>
+<header class="navbar">
 
-    <div class="background"></div>
-    <div class="background"></div>
+<div class="logo">
+<div class="circle"></div>
+<h1>EventHub</h1>
+</div>
 
-    <header class="navbar">
+<nav>
+<a href="/">Início</a>
+<a href="/eventos.html">Eventos</a>
+<a href="/contato.html">Contato</a>
+<a href="/logout">Sair</a>
+</nav>
 
-        <div class="nav-logo">
+</header>
 
-            <div class="circle"></div>
+<main class="container">
 
-            <h1>DevSystem</h1>
+<section class="left">
 
-        </div>
+<span class="badge">
+Plataforma de Eventos
+</span>
 
-       
+<h2>
+Gerencie e participe de eventos com facilidade
+</h2>
 
-    </header>
+<p>
+Sistema desenvolvido com Node.js, Express e MongoDB utilizando arquitetura MVC.
+</p>
 
-    <main class="container">
+<div class="cards">
 
-        <section class="left">
+<div class="info-card">
+<h3>CRUD</h3>
+<p>Eventos completos</p>
+</div>
 
-            <span class="badge">
-                Sistema Full Stack
-            </span>
+<div class="info-card">
+<h3>MVC</h3>
+<p>Arquitetura organizada</p>
+</div>
 
-            <h2>
-                Arquitetura MVC com MongoDB Profissional
-            </h2>
+<div class="info-card">
+<h3>MongoDB</h3>
+<p>Persistência real</p>
+</div>
 
-            <p>
-                Aplicação desenvolvida utilizando Node.js, Express.js, MongoDB e Mongoose seguindo padrões modernos de desenvolvimento back-end com persistência real de dados.
-            </p>
+</div>
 
-            <div class="buttons">
+</section>
 
-                <button class="primary-btn">
-                    Começar
-                </button>
+<section class="right">
 
-                <button class="secondary-btn">
-                    Ver Projeto
-                </button>
+<div class="form-card">
 
-            </div>
+<h2>Novo Evento</h2>
 
-            <div class="stats">
+<form id="eventForm">
 
-                <div class="stat-card">
+<input type="text" placeholder="Título">
 
-                    <h3></h3>
+<input type="text" placeholder="Descrição">
 
-                    <p>MVC</p>
+<input type="date">
 
-                </div>
+<input type="text" placeholder="Local">
 
-                <div class="stat-card">
+<button>
+Criar Evento
+</button>
 
-                    <h3>CRUD</h3>
+</form>
 
-                    <p>Completo</p>
+</div>
 
-                </div>
+</section>
 
-                <div class="stat-card">
-
-                    <h3>NoSQL</h3>
-
-                    <p>MongoDB</p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="right">
-
-            <div class="form-card">
-
-                <h2>Cadastrar Usuário</h2>
-
-                <p>
-                    Teste a integração completa com MongoDB Atlas.
-                </p>
-
-                <form>
-
-                    <div class="input-group">
-
-                        <label>Nome</label>
-
-                        <input type="text" placeholder="Digite seu nome">
-
-                    </div>
-
-                    <div class="input-group">
-
-                        <label>Email</label>
-
-                        <input type="email" placeholder="Digite seu email">
-
-                    </div>
-
-                    <div class="input-group">
-
-                        <label>Senha</label>
-
-                        <input type="password" placeholder="Digite sua senha">
-
-                    </div>
-
-                    <button type="submit">
-                        Criar Usuário
-                    </button>
-
-                </form>
-
-                <div class="footer-card">
-
-                    <div class="mini-box">
-                        Node.js
-                    </div>
-
-                    <div class="mini-box">
-                        Express
-                    </div>
-
-                    <div class="mini-box">
-                        MongoDB
-                    </div>
-
-                    <div class="mini-box">
-                        MVC
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+</main>
 
 </body>
-
 </html>

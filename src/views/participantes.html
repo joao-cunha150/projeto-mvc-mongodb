@@ -1,85 +1,62 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventHub - Participantes</title>
-    <link rel="stylesheet" href="/css/style.css">
+
+<title>Participantes</title>
+
+<link rel="stylesheet" href="/style.css">
+
 </head>
 
 <body>
-    <a href="/logout" style="
-    padding:10px 15px;
-    background:red;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-">
-    Sair
-</a>
-    <div class="background"></div>
 
-    <header class="navbar">
-        <div class="logo">
-            <div class="circle"></div>
-            <h1>EventHub</h1>
-        </div>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/eventos.html">Eventos</a>
-            <a href="/participantes.html">Participantes</a>
-            <a href="/contato.html">Contato</a>
-        </nav>
-    </header>
+<header class="navbar">
 
-    <main class="event-page">
-        <div class="page-title">
-            <h2>👥 Participantes</h2>
-            <p>Lista de todos os participantes cadastrados nos eventos</p>
-        </div>
-        <div id="participantesContainer" style="max-width: 800px; margin: 0 auto;"></div>
-    </main>
+<div class="logo">
 
-    <script>
-        async function carregarParticipantes() {
-            try {
-                const response = await fetch('/api/events');
-                const eventos = await response.json();
-                const container = document.getElementById('participantesContainer');
-                
-                let todosParticipantes = [];
-                eventos.forEach(evento => {
-                    if (evento.listaParticipantes && evento.listaParticipantes.length > 0) {
-                        evento.listaParticipantes.forEach(p => {
-                            todosParticipantes.push({ nome: p, evento: evento.titulo, data: evento.data });
-                        });
-                    }
-                });
-                
-                if (todosParticipantes.length === 0) {
-                    container.innerHTML = '<div style="text-align: center; padding: 60px; background: rgba(30,41,59,0.5); border-radius: 24px;"><h3 style="color: #c4b5fd;">Nenhum participante ainda</h3><p style="color: #94a3b8;">Os participantes aparecerão aqui quando se inscreverem nos eventos.</p></div>';
-                    return;
-                }
-                
-                container.innerHTML = todosParticipantes.map(p => `
-                    <div style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 1px solid rgba(139,92,246,0.25); border-radius: 20px; padding: 20px; margin-bottom: 16px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                            <div>
-                                <h3 style="color: #c4b5fd; margin-bottom: 5px;">${p.nome}</h3>
-                                <p style="color: #94a3b8; font-size: 14px;">Evento: ${p.evento}</p>
-                            </div>
-                            <span class="info-box">📅 ${p.data}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error('Erro:', error);
-            }
-        }
-        
-        carregarParticipantes();
-    </script>
+<div class="circle"></div>
+
+<h1>EventHub</h1>
+
+</div>
+
+<nav>
+
+<a href="/">Início</a>
+
+<a href="/eventos.html">Eventos</a>
+
+<a href="/participantes.html">Participantes</a>
+
+<a href="/contato.html">Contato</a>
+
+</nav>
+
+</header>
+
+<section class="generic-page">
+
+<div class="glass-box">
+
+<h2>Participantes</h2>
+
+<p>
+
+Visualize os participantes dos eventos.
+
+</p>
+
+<div class="counter">
+
+0 participantes cadastrados
+
+</div>
+
+</div>
+
+</section>
+
 </body>
 
 </html>

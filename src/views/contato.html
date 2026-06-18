@@ -1,77 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventHub - Contato</title>
-    <link rel="stylesheet" href="/css/style.css">
+
+<title>Contato</title>
+
+<link rel="stylesheet" href="/style.css">
+
 </head>
 
 <body>
-    <div class="background"></div>
 
-    <header class="navbar">
-        <div class="logo">
-            <div class="circle"></div>
-            <h1>EventHub</h1>
-        </div>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/eventos.html">Eventos</a>
-            <a href="/participantes.html">Participantes</a>
-            <a href="/contato.html">Contato</a>
-        </nav>
-    </header>
+<header class="navbar">
 
-    <main class="contact-container">
-        <div class="contact-info">
-            <h2>📞 Entre em Contato</h2>
-            <p>Estamos aqui para ajudar! Envie sua mensagem.</p>
-        </div>
+<div class="logo">
 
-        <div class="contact-list">
-            <div class="contact-item">
-                <h3>📧 E-mail</h3>
-                <p>contato@eventhub.com</p>
-            </div>
-            <div class="contact-item">
-                <h3>📱 Telefone</h3>
-                <p>(51) 99999-9999</p>
-            </div>
-            <div class="contact-item">
-                <h3>💬 WhatsApp</h3>
-                <p>(51) 98888-8888</p>
-            </div>
-        </div>
+<div class="circle"></div>
 
-        <div class="contact-form-card">
-            <h3>Envie sua mensagem</h3>
-            <form id="contactForm">
-                <input type="text" id="nome" placeholder="Seu nome" required>
-                <input type="email" id="email" placeholder="Seu e-mail" required>
-                <textarea id="mensagem" placeholder="Sua mensagem" required></textarea>
-                <button type="submit">Enviar Mensagem</button>
-            </form>
-        </div>
-    </main>
+<h1>EventHub</h1>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            document.getElementById('contactForm').reset();
-        });
-    </script>
-    <a href="/logout" style="
-    padding:10px 15px;
-    background:red;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-">
-    Sair
-</a>
+</div>
+
+<nav>
+
+<a href="/">Início</a>
+
+<a href="/eventos.html">Eventos</a>
+
+<a href="/participantes.html">Participantes</a>
+
+<a href="/contato.html">Contato</a>
+
+</nav>
+
+</header>
+
+<section class="generic-page">
+
+<div class="glass-box">
+
+<h2>Contato</h2>
+
+<p>
+
+Entre em contato com nossa equipe.
+
+</p>
+
+<form>
+
+<input placeholder="Nome">
+
+<input placeholder="Email">
+
+<textarea placeholder="Mensagem"></textarea>
+
+<button>
+
+Enviar
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
 </body>
 
 </html>

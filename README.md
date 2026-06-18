@@ -116,6 +116,23 @@ SESSION_SECRET=sua_chave_secreta
 ```
 
 ---
+# TELAS DO PROJETO-MVC
+
+# TELA DE LOGIN
+
+![TELA DE LOGIN](./src/public/img/login.png)
+
+# TELA DE EVENTOS
+
+![TELA DE EVENTOS](./src/public/img/eventos.png)
+
+# TELA DE CONTATO
+
+![TELA DE CONTATO](./src/public/img/contato.png)
+
+# TELA DE PARTICIPANTES
+
+![TELA DE PARTICIPANTES](./src/public/img/participantes.png)
 
 #  Funcionalidades
 
