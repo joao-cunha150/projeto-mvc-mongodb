@@ -1,5 +1,11 @@
 const User = require('../models/User');
-
+/**
+ * Cria um novo usuário.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.createUser = async (req, res) => {
 
     try {
@@ -49,7 +55,13 @@ exports.createUser = async (req, res) => {
     }
 
 };
-
+/**
+ * Lista todos os usuários cadastrados.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.getUsers = async (req, res) => {
 
     try {
@@ -73,6 +85,13 @@ exports.getUsers = async (req, res) => {
 
 };
 
+/**
+ * Busca um usuário pelo ID.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.getUserById = async (req, res) => {
 
     try {
@@ -105,7 +124,13 @@ exports.getUserById = async (req, res) => {
     }
 
 };
-
+/**
+ * Atualiza os dados de um usuário.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.updateUser = async (req, res) => {
 
     try {
@@ -146,7 +171,13 @@ exports.updateUser = async (req, res) => {
     }
 
 };
-
+/**
+ * Remove um usuário do sistema.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.deleteUser = async (req, res) => {
 
     try {

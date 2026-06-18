@@ -1,9 +1,20 @@
 const User = require("../models/User");
-
+/**
+ * Exibe a página de login.
+ *
+ * @param {import('express').Request} req Requisição HTTP.
+ * @param {import('express').Response} res Resposta HTTP.
+ */
 exports.loginPage = (req, res) => {
   res.render("login");
 };
-
+/**
+ * Realiza a autenticação do usuário.
+ *
+ * @param {import('express').Request} req Requisição HTTP.
+ * @param {import('express').Response} res Resposta HTTP.
+ * @returns {Promise<void>}
+ */
 exports.login = async (req, res) => {
 
   const { email, senha } = req.body;
@@ -37,7 +48,12 @@ exports.login = async (req, res) => {
   }
 
 };
-
+/**
+ * Encerra a sessão do usuário.
+ *
+ * @param {import('express').Request} req Requisição HTTP.
+ * @param {import('express').Response} res Resposta HTTP.
+ */
 exports.logout = (req, res) => {
 
   req.session.destroy(() => {

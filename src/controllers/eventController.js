@@ -1,5 +1,11 @@
 const Event = require('../models/Event');
-
+/**
+ * Cria um novo evento.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.createEvent = async (req, res) => {
 
     try {
@@ -45,7 +51,13 @@ exports.createEvent = async (req, res) => {
     }
 
 };
-
+/**
+ * Lista todos os eventos cadastrados.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.getEvents = async (req, res) => {
 
     try {
@@ -68,7 +80,13 @@ exports.getEvents = async (req, res) => {
     }
 
 };
-
+/**
+ * Busca um evento pelo ID.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.getEventById = async (req, res) => {
 
     try {
@@ -101,7 +119,13 @@ exports.getEventById = async (req, res) => {
     }
 
 };
-
+/**
+ * Atualiza um evento existente.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.updateEvent = async (req, res) => {
 
     try {
@@ -142,7 +166,13 @@ exports.updateEvent = async (req, res) => {
     }
 
 };
-
+/**
+ * Remove um evento do sistema.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @returns {Promise<void>}
+ */
 exports.deleteEvent = async (req, res) => {
 
     try {

@@ -1,120 +1,85 @@
-# DevSystem - Sistema MVC com Autenticação
+# 🚀 Projeto MVC MongoDB
 
-## Sobre o Projeto
+Sistema desenvolvido utilizando Node.js, Express e MongoDB seguindo a arquitetura MVC (Model-View-Controller).
 
-O DevSystem é uma aplicação web desenvolvida utilizando arquitetura MVC (Model-View-Controller) com foco em organização, segurança e persistência de dados utilizando MongoDB.
+A aplicação permite gerenciamento de usuários e eventos, autenticação de usuários e controle de acesso através de sessões.
 
-O projeto foi criado como atividade prática para implementação de:
+O projeto possui documentação interna utilizando JSDoc para facilitar manutenção, entendimento e evolução do código.
 
-* Sistema de autenticação
-* Controle de acesso
-* Gerenciamento de sessões
-* Middleware de proteção
-* Logout seguro
+![Node.js](https://img.shields.io/badge/Node.js-v22-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
 
 ---
 
-# Tecnologias Utilizadas
+#  Tecnologias Utilizadas
 
 * Node.js
 * Express.js
-* MongoDB Atlas
+* MongoDB
 * Mongoose
+* Express Session
 * HTML5
 * CSS3
 * JavaScript
-* Express-Session
 
 ---
 
-# Estrutura do Projeto
+#  Estrutura do Projeto
 
-```bash
-├── config/
-│   └── database.js
-├── src/
-│   ├── controllers/
-│   │   └── authController.js
-│   ├── middlewares/
-│   │   └── auth.js
-│   ├── routes/
-│   │   └── authRoutes.js
-│   ├── views/
-│   │   ├── login.html
-│   │   ├── index.html
-│   │   ├── eventos.html
-│   │   ├── contato.html
-│   │   └── participantes.html
-│   └── public/
-│       └── css/
-│           └── style.css
-├── server.js
+```text
+PROJETO-MVC-MONGODB
+│
+├── src
+│   ├── config
+│   │   └── db.js
+│   │
+│   ├── controllers
+│   │   ├── authController.js
+│   │   ├── eventController.js
+│   │   └── userController.js
+│   │
+│   ├── middlewares
+│   │   ├── auth.js
+│   │   └── logger.js
+│   │
+│   ├── models
+│   │   ├── Event.js
+│   │   └── User.js
+│   │
+│   ├── routes
+│   │   ├── authRoutes.js
+│   │   ├── eventRoutes.js
+│   │   └── userRoutes.js
+│   │
+│   ├── public
+│   │   └── css
+│   │       └── style.css
+│   │
+│   └── views
+│
+├── .env.example
 ├── package.json
-└── README.md
+├── README.md
+└── server.js
 ```
 
 ---
 
-# Funcionalidades Implementadas
+#  Instalação
 
-## Sistema de Login
-
-O usuário pode realizar login utilizando e-mail e senha cadastrados no banco de dados.
-
----
-
-## Sessão de Usuário
-
-Foi utilizado o pacote:
+Clone o repositório:
 
 ```bash
-express-session
+git clone https://github.com/joao-cunha150/projeto-mvc-mongodb.git
 ```
 
-para gerenciamento de sessões autenticadas.
-
----
-
-## Middleware de Proteção
-
-As páginas internas do sistema são protegidas através de middleware.
-
-Usuários não autenticados são automaticamente redirecionados para a tela de login.
-
----
-
-## Logout Seguro
-
-O sistema possui logout seguro utilizando:
-
-```js
-req.session.destroy()
-```
-
-Além disso, o cookie da sessão é removido para impedir acesso após sair do sistema.
-
----
-
-# Segurança
-
-* Controle de sessão
-* Bloqueio de rotas privadas
-* Redirecionamento automático
-* Proteção contra acesso sem login
-
----
-
-# Como Executar o Projeto
-
-## 1. Clonar o repositório
+Acesse a pasta:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+cd projeto-mvc-mongodb
 ```
 
----
-
-## 2. Instalar dependências
+Instale as dependências:
 
 ```bash
 npm install
@@ -122,26 +87,61 @@ npm install
 
 ---
 
-## 3. Executar o projeto
+#  Executando o Projeto
+
+Modo normal:
 
 ```bash
 npm start
 ```
 
+Modo desenvolvimento:
+
+```bash
+npm run dev
+```
+
 ---
 
-# Requisitos da Atividade Atendidos
+#  Variáveis de Ambiente
 
-* Bloqueio de páginas sem login
-* Login funcional
-* Persistência de sessão
+Crie um arquivo `.env` na raiz do projeto:
+
+```env
+PORT=3000
+
+MONGO_URI=mongodb://localhost:27017/projeto_mvc
+
+SESSION_SECRET=sua_chave_secreta
+```
+
+---
+
+#  Funcionalidades
+
+* Cadastro de usuários
+* Listagem de usuários
+* Atualização de usuários
+* Exclusão de usuários
+* Cadastro de eventos
+* Listagem de eventos
+* Atualização de eventos
+* Exclusão de eventos
+* Login de usuários
 * Logout seguro
+* Controle de sessão
 * Middleware de autenticação
-* Estrutura MVC organizada
-* Integração com MongoDB
 
 ---
 
-# Autor
+#  Documentação
 
-Projeto desenvolvido para atividade prática de autenticação utilizando Node.js, Express e MongoDB.
+O projeto utiliza JSDoc nos Controllers e Models para documentação interna do código e suporte ao IntelliSense do Visual Studio Code.
+
+---
+
+#  Autor
+
+João Victor da Cunha Rosa
+
+Projeto acadêmico desenvolvido utilizando Node.js, Express e MongoDB seguindo a arquitetura MVC.

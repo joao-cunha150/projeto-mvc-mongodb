@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
 
+/**
+ * Model responsável pelo gerenciamento dos eventos.
+ *
+ * @typedef {Object} Event
+ * @property {string} titulo Título do evento.
+ * @property {string} descricao Descrição do evento.
+ * @property {string} data Data do evento.
+ * @property {string} local Local do evento.
+ * @property {number} participantes Número de participantes.
+ */
 const EventSchema = new mongoose.Schema({
 
     titulo: {

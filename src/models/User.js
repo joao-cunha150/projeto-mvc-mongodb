@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
-
+/**
+ * Model responsável pelo gerenciamento dos usuários.
+ *
+ * @typedef {Object} User
+ * @property {string} nome Nome do usuário.
+ * @property {string} email E-mail do usuário.
+ * @property {string} senha Senha do usuário.
+ */
 const UserSchema = new mongoose.Schema({
 
     nome: {
