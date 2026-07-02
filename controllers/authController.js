@@ -14,7 +14,7 @@ function gerarMd5(texto) {
 
 async function login(req, res) {
   try {
-    const { nick, senha } = req.body;
+    const { email, senha } = req.body;
 
     if (!nick || !senha) {
       return res.status(400).json({ erro: 'Informe nick e senha.' });

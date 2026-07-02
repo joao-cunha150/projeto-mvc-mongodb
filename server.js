@@ -1,6 +1,9 @@
-// server.js
 require('dotenv').config();
+
 const express = require('express');
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
+
 const app = express();
 
 app.use(express.json());
@@ -17,13 +20,17 @@ const pedidosRoutes = require('./routes/pedidosRoutes');
 app.use('/api', apiRoutes);
 app.use('/api/auth', authRoutes);
 
-// Privadas (exigem token + x-user-id)
+// Privadas
 app.use('/api/categorias', categoriaRoutes);
 app.use('/api/produtos', produtosRoutes);
 app.use('/api/clientes', clientesRoutes);
 app.use('/api/pedidos', pedidosRoutes);
 
+// Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
